@@ -33,10 +33,12 @@
                     <td>{{ ticket.title }}</td>
                     <td>{{ ticket.resolution_date|date:"d-m-Y" }}</td>
                     <td>
-                      <button type="button" class="btn icon-btn border-0">
+                      <button type="button" class="btn icon-btn border-0" data-bs-toggle="modal" 
+                      data-bs-target="#exampleModalDefault">
                         <i class="ti ti-edit f-s-20 text-success"></i>
                       </button>
-                      <button type="button" class="btn icon-btn border-0">
+                      <button type="button" class="btn icon-btn border-0" data-bs-toggle="tooltip" data-bs-placement="right"
+                      data-bs-custom-class="custom-secondary" data-bs-html="true" title="Remover Ticket">
                         <i class="ti ti-trash f-s-20 text-danger"></i>
                       </button>
                     </td>
@@ -49,6 +51,38 @@
                 {{ no_ticket_message }}
               </div>
             {% endif %}
+
+            <div class="modal fade" id="exampleModalDefault" tabindex="-1"
+            aria-labelledby="exampleModalDefault" aria-hidden="true">
+            <div class="modal-dialog app_modal_xl">
+              <div class="modal-content">
+                <div class="modal-header bg-primary-800">
+                  <h1 class="modal-title fs-5 text-white" id="exampleModalDefault13">Default Modal</h1>
+                  <button type="button" class="fs-5 border-0  bg-none text-white" data-bs-dismiss="modal"
+                    aria-label="Close"><i class="fa-solid fa-xmark fs-3"></i></button>
+                </div>
+                <div class="modal-body ">
+                  <div class="row">
+                    <div class="col-lg-3 text-center align-self-center">
+                      <img src={% static "/images/modals/04.png" %} alt="" class="img-fluid b-r-10">
+                    </div>
+                    <div class="col-lg-9 ps-4">
+                      <h5>Wed designer</h5>
+                      <ul class="mt-2 mb-0 list-disc">
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-light-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           </div>
         </div>
       </div>
