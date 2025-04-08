@@ -1,0 +1,39 @@
+{% load static %}
+
+<nav class="dark-sidebar">
+  <div class="app-logo">
+    <a class="logo d-inline-block" href="#">
+      <img src={% static "/gsc/logo_gsc.png" %} alt="#" class="dark-logo">
+    </a>
+
+    <span class="bg-light-light toggle-semi-nav">
+      <i class="ti ti-chevrons-right f-s-20"></i>
+    </span>
+  </div>
+  <div class="app-nav" id="app-simple-bar" data-simplebar="init">
+    <ul class="main-nav p-0 mt-2">
+      <li class="menu-title"> <span>Dashboard</span></li>
+
+      <li>
+        <a class="show" data-bs-toggle="collapse" href="#dashboard" aria-expanded="false">
+          <i class="ti ti-home"></i>
+          dashboard
+          <span class="badge text-bg-primary badge-notification ms-2">2</span>
+        </a>
+        <ul class="collapse show" id="dashboard" aria-expanded="true">
+          <li><a href="#">Em construção</a></li>
+          <li><a href="#">Em construção</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-title"> <span>Suporte</span></li>
+
+      <li class="no-sub">
+        <a class="" href="#">
+          <i class="ti ti-headset"></i> Tickets
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

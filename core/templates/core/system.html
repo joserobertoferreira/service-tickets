@@ -1,0 +1,58 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="app-wrapper happy">
+
+  {% include "core/partials/preloader.html" %}
+
+  <!-- Menu Navigation starts -->
+  {% include "core/partials/navbar.html" %}
+  <!-- Menu Navigation ends -->
+
+  <div class="app-content">
+    <div class="">
+
+      <!-- Header Section starts -->
+      {% include "core/partials/header.html" %}
+      <!-- Header Section ends -->
+
+      <!-- Body main section starts -->
+      <main>
+        <div class="container-fluid">
+          {% block system %}
+          {% endblock system %}
+        </div>
+      </main>
+      <!-- Body main section ends -->
+  
+    </div>
+  </div>
+  
+  </div>
+  
+  <!-- tap on top -->
+  <div class="go-top">
+  <span class="progress-value">
+    <i class="ti ti-arrow-up"></i>
+  </span>
+  </div>
+  
+  <!-- essential -->
+  
+  <!--customizer-->
+  {% include "core/partials/customizer.html" %}
+  
+  {% include "core/partials/scripts.html" %}
+  
+  <!-- latest jquery-->
+  <script src={% static "/vendor/datatable/jquery.dataTables.min.js" %}></script>
+  <!-- data table js-->
+  <script src={% static "/js/data_table.js" %}></script>
+
+  {% include "core/partials/scripts2.html" %}
+  
+  {% endblock content %}
+  

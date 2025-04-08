@@ -1,0 +1,103 @@
+{% load static %}
+<!-- Header Section starts -->
+<header class="header-main">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 d-flex align-items-center justify-content-end header-right">
+                <ul class="d-flex align-items-center">
+                  <li class="header-language">
+                    <div id="lang_selector" class="flex-shrink-0 dropdown">
+                      <a href="#" class="d-block head-icon ps-0" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <div class="lang-flag lang-en ">
+                          <span class="flag rounded-circle overflow-hidden">
+                            <i class="flag-icon flag-icon-prt flag-icon-squared b-r-50 f-s-22"></i>
+                          </span>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu language-dropdown dropdown-menu-end header-card border-0 p-0">
+                        <li>
+                          <div class="card-header bg-dark py-2">
+                            <h5 class="text-white">language <span class="float-end"><i
+                                  class="ti ti-language"></i></span></h5>
+                          </div>
+                        </li>
+                        <li class="lang lang-pt selected dropdown-item p-2" title="PT">
+                          <span class="d-flex align-items-center">
+                            <i class="flag-icon flag-icon-prt flag-icon-squared b-r-50 f-s-22"></i>
+                            <span class="ps-2 text-secondary">Portugal</span>
+                          </span>
+                        </li>
+                        <li class="lang lang-en selected dropdown-item p-2" title="US">
+                          <span class="d-flex align-items-center">
+                            <i class="flag-icon flag-icon-usa flag-icon-squared b-r-50 f-s-22"></i>
+                            <span class="ps-2 text-secondary">USA</span>
+                          </span>
+                        </li>
+                        <li class="lang lang-pt dropdown-item p-2" title="FR">
+                          <span class="d-flex align-items-center">
+                            <i class="flag-icon flag-icon-fra flag-icon-squared b-r-50 f-s-22"></i>
+                            <span class="ps-2 text-secondary">França</span>
+                          </span>
+                        </li>
+                        <li class="lang lang-es dropdown-item p-2" title="UK">
+                          <span class="d-flex align-items-center">
+                            <i class="flag-icon flag-icon-gbr flag-icon-squared b-r-50 f-s-22"></i>
+                            <span class="ps-2 text-secondary">UK</span>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <!-- Header profile-->
+                  <li class="header-profile">
+                    <div class="flex-shrink-0 dropdown">
+                      <a href="#" class="d-block head-icon pe-0" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <img src={% static "/images/avatar/avatar.png" %} alt="mdo" class="rounded-circle h-35 w-35">
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end header-card border-0 px-2">
+                        <li class="dropdown-item d-flex align-items-center p-2">
+                          <span class="h-35 w-35 d-flex-center b-r-50 position-relative">
+                            <img src={% static "/images/avatar/avatar.png" %} alt="" class="img-fluid b-r-50">
+                            <span
+                              class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle animate__animated animate__fadeIn animate__infinite animate__fast"></span>
+                          </span>
+                          <div class="flex-grow-1 ps-2">
+                            <h6 class="mb-0"> {{ user }}</h6>
+                            <p class="f-s-12 mb-0 text-secondary">Web Designer</p>
+                          </div>
+                        </li>
+                        <li class="app-divider-v dotted my-1"></li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'tickets:page_not_found' %}">
+                            <i class="ti ti-user-circle pe-1 f-s-18"></i> Profile
+                          </a>
+                        </li>
+                        <li class="app-divider-v dotted my-1"></li>
+                        <li class="btn-light-danger b-r-5">
+                          <form method="post" action="{% url 'accounts:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item mb-0 text-danger">
+                              <i class="ti ti-logout pe-1 f-s-18 text-danger"></i>
+                              Logout
+                            </button>
+                          </form>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header Section ends -->

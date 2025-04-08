@@ -1,0 +1,24 @@
+[project]
+authors = ['José Roberto Ferreira']
+description = "HelpDesk X3 - Sistema de Suporte ao Cliente"
+name = "Service Tickets"
+requires-python = ">=3.10"
+version = "0.1.0"
+
+[tool.taskipy.tasks]
+run = "python3 manage.py runserver"
+migrate = "python3 manage.py migrate"
+make = "python3 manage.py makemigrations"
+app = "python3 manage.py startapp"
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'

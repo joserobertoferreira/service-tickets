@@ -1,0 +1,42 @@
+{% load static %}
+<!-- HTML head meta tags, fonts and title tag -->
+{% include "partials/head.html" %}
+
+<!-- icons css files -->
+{% include "partials/head2.html" %}
+
+  {% include "partials/head3.html" %}
+
+  <div class="error-container p-0">
+    <div class="container">
+      <div>
+        <div>
+          <img src={% static "/images/background/error-400.png" %} alt="">
+        </div>
+        <div class="mb-3">
+          <h1 class="text-dark"><span class="text-danger f-w-600">400</span> <span class="f-w-600">Bad Request</span>
+          </h1>
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+              <p class="text-center text-secondary f-w-500">400 Bad Request response status code indicates that the
+                server
+                cannot or will not
+                process the request due to something that is perceived to be a client error</p>
+            </div>
+          </div>
+        </div>
+        <a role="button" href="index" class="btn btn-danger"><i class="ti ti-home"></i> Back To Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- essential   -->
+
+  <?php include("partials/scriptsAuth.php"); ?>
+
+
+</body>
+
+</html>

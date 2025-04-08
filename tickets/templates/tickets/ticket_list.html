@@ -1,0 +1,59 @@
+{% extends "core/system.html" %}
+{% load static %}
+
+{% block system %}
+  <!-- Data Table start -->
+  <div class="row">
+    <!-- Default Datatable start -->
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>{{ page_title }}</h5>
+        </div>
+        <div class="card-body p-3">
+          <div class="overflow-auto data-table-style app-scroll">
+            {% if ticket_list %}
+              <table id="tickets" class="display w-100 row-border-table table-responsive">
+                <thead>
+                  <tr class="mg-40">
+                    <th>{{ field_labels.ticket_date }}</th>
+                    <th>{{ field_labels.service_number }}</th>
+                    <th>{{ field_labels.ticket_status }}</th>
+                    <th>{{ field_labels.title }}</th>
+                    <th>{{ field_labels.resolution_date }}</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ticket in ticket_list %}
+                  <tr>
+                    <td>{{ ticket.ticket_date|date:"d-m-Y" }}</td>
+                    <td><span class="badge text-light-primary">{{ ticket.service_number }}</span></td>
+                    <td>{{ ticket.ticket_status }}</td>
+                    <td>{{ ticket.title }}</td>
+                    <td>{{ ticket.resolution_date|date:"d-m-Y" }}</td>
+                    <td>
+                      <button type="button" class="btn icon-btn border-0">
+                        <i class="ti ti-edit f-s-20 text-success"></i>
+                      </button>
+                      <button type="button" class="btn icon-btn border-0">
+                        <i class="ti ti-trash f-s-20 text-danger"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <div class="alert alert-warning text-dark" role="alert">
+                {{ no_ticket_message }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Default Datatable end -->
+  </div>
+  <!-- Data Table end -->
+{% endblock system %}

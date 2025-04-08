@@ -1,0 +1,86 @@
+{% extends "core/base.html" %}<!-- HTML head meta tags, fonts and title tag -->
+{% load static %}
+
+{% block content %}
+<div class="app-wrapper happy d-block">
+  <div class="">
+    <!-- Body main section starts -->
+    <main class="w-100">
+      <!-- sign in start -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-7 col-xl-8 d-none d-lg-block p-0">
+            <div class="image-contentbox gs-bg-color-5">
+              <img src={% static "/images/login/login_01.jpg" %} class="img-fluid" alt="">
+            </div>
+          </div>
+          <div class="col-lg-5 col-xl-4 p-0 bg-white">
+            <div class="form-container">
+              <form class="app-form" method="post">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-5 text-center text-lg-start">
+                      <h2 class="text-primary f-w-600">Bem-vindo ao GSC Service </h2>
+                      <p>Entre com os dados que introduziu durante o seu registo</p>
+  
+                      {% if error %}
+                        <div class="form-text text-danger py-3">
+                          {{ error }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% csrf_token %}
+
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label for="username" class="form-label">{{ form.username.label }}</label>
+                      {{ form.username }}
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <label for="password" class="form-label">{{ form.password.label }}</label>
+                      {{ form.password }}
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                      <label class="form-check-label text-secondary" for="checkDefault">
+                        Remember me
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="mb-3">
+                      <a href="{% url 'accounts:password_change' %}" class="link-primary float-end">Esqueci a password</a>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <!--a href="./index" role="button" class="btn btn-primary w-100">Sign In</a-->
+                      <input type="submit" class="btn btn-primary w-100" value="Login">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="text-center text-lg-start">
+                      Ainda não tem uma conta? <a href="{% url 'accounts:register' %}"
+                        class="link-primary text-decoration-underline"> Criar nova conta</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- sign in end -->
+    </main>
+    <!-- Body main section ends -->
+  </div>
+</div>
+{% include "core/partials/scriptsAuth.html" %}
+{% endblock content %}

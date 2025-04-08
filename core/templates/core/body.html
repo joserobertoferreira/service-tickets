@@ -1,0 +1,62 @@
+{% load static %}
+<!-- HTML head meta tags, fonts and title tag -->
+{% include "core/partials/head.html" %}
+
+<!-- icons css files -->
+{% include "core/partials/head2.html" %}
+
+{% include "core/partials/head3.html" %}
+
+<div class="app-wrapper happy">
+  
+  {% include "core/partials/preloader.html" %}
+  
+  <!-- Menu Navigation starts -->
+  {% include "core/partials/navbar.html" %}
+  <!-- Menu Navigation ends -->
+  
+  <div class="app-content">
+    <div class="">
+      
+      <!-- Header Section starts -->
+      {% include "core/partials/header.html" %}
+      <!-- Header Section ends -->
+      
+      <!-- Body main section starts -->
+      <main>
+        <div class="container-fluid">
+          {% block content %}
+          {% endblock content %}
+
+        </div>
+      </main>
+
+      <!-- Body main section ends -->
+
+    </div>
+  </div>
+
+</div>
+
+<div class="go-top">
+  <span class="progress-value">
+    <i class="ti ti-arrow-up"></i>
+  </span>
+</div>
+
+<!-- essential   -->
+
+<!--customizer-->
+{% include "core/partials/customizer.html" %}
+
+{% include "core/partials/scripts.html" %}
+
+<!-- latest jquery-->
+<script src={% static "/vendor/datatable/jquery.dataTables.min.js" %}></script>
+<!-- data table js-->
+<script src={% static "/js/data_table.js" %}></script>
+
+{% include "core/partials/scripts2.html" %}
+        
+</body>
+</html>
