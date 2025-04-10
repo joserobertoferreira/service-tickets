@@ -1,8 +1,8 @@
-# from core.decorators.cache_db import results_db
 from core.utils.database.database import Database
 
 
-def read_country_data(db_alias, query, where_clause=None):
+@staticmethod
+def execute_query(db_alias, query, params=None):
     """
     Retrieves data from a legacy database.
 
@@ -12,8 +12,9 @@ def read_country_data(db_alias, query, where_clause=None):
                 Pass None or an empty tuple if there are no parameters.
 
     Returns:
-        A list of tuples representing the rows found (only the first two columns),
-        or an empty list in case of an error or if no data is found.
+        A list of dictionaries representing the rows found in the database.
+        Each dictionary contains the column names as keys and the corresponding values.
+        If no data is found, an empty list is returned.
     """
     database = Database(db_alias)
     data = []
@@ -23,9 +24,12 @@ def read_country_data(db_alias, query, where_clause=None):
             try:
                 with connection.cursor() as cursor:
                     print('Executando query...')
-                    cursor.execute(query, where_clause)
+                    cursor.execute(query, params)
+
+                    columns = [desc[0] for desc in cursor.description]
+
                     for row in cursor.fetchall():
-                        data.append((row[0], row[1]))
+                        data.append(dict(zip(columns, row)))
             except Exception as e:
                 print(f'Erro ao buscar dados do banco legado: {e}')
                 data = []

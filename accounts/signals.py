@@ -14,11 +14,15 @@ User = get_user_model()
 # LEGACY_DB_ALIAS = 'legacy'
 
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=User, dispatch_uid='create_user_contact')
 def create_user_contact(sender, instance, created, **kwargs):
     """
     Create a user profile when a new user is created.
     """
+    if not created:
+        # If the user is not created, do nothing
+        return
+
     uuid_bytes = uuid.uuid4().bytes
 
     user_data = {
@@ -34,7 +38,7 @@ def create_user_contact(sender, instance, created, **kwargs):
     partners_data = Partner.objects.filter(european_vat_number=user_data['vat_number']).first()
 
     if partners_data is None:
-        print(f'Nenhum parceiro encontrado para o usuário {user_data["contact_code"]}')
+        print(f'Nenhum parceiro encontrado para o utilizador {user_data["contact_code"]}')
         return
 
     address_data = Address.objects.filter(entity_number=partners_data.bp, code=partners_data.default_address).first()

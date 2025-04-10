@@ -1,7 +1,7 @@
 from decouple import config
 
 # from core.decorators.cache_db import results_db
-from core.utils.database import Database
+from core.utils.database.database import Database
 
 
 # @results_db(timeout=300, cache_key_prefix='customers')

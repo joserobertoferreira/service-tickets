@@ -3,7 +3,7 @@ import uuid
 
 from django.db import connections
 
-from core.utils.database import Database
+from core.utils.database.database import Database
 from core.utils.helpers import PositionType
 
 COMPLEMENT_TYPE = 9
@@ -78,7 +78,8 @@ class CounterService:
 
         return acodnum
 
-    def is_complement(self, field_values):
+    @staticmethod
+    def is_complement(field_values):
         """
         Verifica se o número é um complemento.
         """
@@ -89,7 +90,8 @@ class CounterService:
 
         return False
 
-    def exist_sequence(self, field_value):
+    @staticmethod
+    def exist_sequence(field_value):
         """
         Verifica se existe uma sequência no contador.
         """
@@ -114,11 +116,13 @@ class CounterService:
 
         return 0
 
-    def _get_constant_segment(self, counter, index):
+    @staticmethod
+    def _get_constant_segment(counter, index):
         key = f'POSCTE_{index}'
         return counter.get(key, '')
 
-    def _get_year_segment(self, counter, index, current_date):
+    @staticmethod
+    def _get_year_segment(counter, index, current_date):
         size_key = f'POSLNG_{index}'
         size = counter.get(size_key, 0)
         if size == 1:
@@ -130,7 +134,8 @@ class CounterService:
         print(f'Aviso: Tamanho de ano inválido ({size}) para índice {index}')
         return ''
 
-    def _get_month_segment(self, counter, index, current_date):
+    @staticmethod
+    def _get_month_segment(counter, index, current_date):
         size_key = f'POSLNG_{index}'
         size = counter.get(size_key, 0)
         if size == 2:
@@ -143,10 +148,12 @@ class CounterService:
         print(f'Aviso: Tamanho de mês inválido ({size}) para índice {index}')
         return ''
 
-    def _get_week_number_segment(self, current_date):
+    @staticmethod
+    def _get_week_number_segment(current_date):
         return current_date.strftime('%W')
 
-    def _get_day_segment(self, counter, index, current_date):
+    @staticmethod
+    def _get_day_segment(counter, index, current_date):
         size_key = f'POSLNG_{index}'
         size = counter.get(size_key, 0)
         if size == 1:
@@ -158,7 +165,8 @@ class CounterService:
         print(f'Aviso: Tamanho de dia inválido ({size}) para índice {index}')
         return ''
 
-    def _get_sequence_segment(self, counter, index, sequence_number, max_value):
+    @staticmethod
+    def _get_sequence_segment(counter, index, sequence_number, max_value):
         # TODO: Lógica de max_value/status
         size_key = f'POSLNG_{index}'
         size = counter.get(size_key, 0)
@@ -167,7 +175,8 @@ class CounterService:
             return ''
         return f'{sequence_number:0{size}d}'
 
-    def _get_complement_segment(self, counter, index, sequence_number, max_value):
+    @staticmethod
+    def _get_complement_segment(counter, index, sequence_number, max_value):
         if sequence_number > max_value:
             status = 2
 

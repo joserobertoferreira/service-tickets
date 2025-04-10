@@ -13,7 +13,7 @@
         <div class="card-body p-3">
           <div class="overflow-auto data-table-style app-scroll">
             {% if ticket_list %}
-              <table id="tickets" class="display w-100 row-border-table table-responsive">
+              <table id="ticket-list" class="display w-100 row-border-table table-responsive">
                 <thead>
                   <tr class="mg-40">
                     <th>{{ field_labels.ticket_date }}</th>
@@ -33,12 +33,12 @@
                     <td>{{ ticket.title }}</td>
                     <td>{{ ticket.resolution_date|date:"d-m-Y" }}</td>
                     <td>
-                      <button type="button" class="btn icon-btn border-0" data-bs-toggle="modal" 
+                      <button type="button" class="btn icon-btn border-0" data-bs-toggle="modal"
                       data-bs-target="#exampleModalDefault">
                         <i class="ti ti-edit f-s-20 text-success"></i>
                       </button>
-                      <button type="button" class="btn icon-btn border-0" data-bs-toggle="tooltip" data-bs-placement="right"
-                      data-bs-custom-class="custom-secondary" data-bs-html="true" title="Remover Ticket">
+                      <button type="button" class="btn icon-btn border-0" data-bs-toggle="modal"
+                      data-bs-target="#exampleModalDefault">
                         <i class="ti ti-trash f-s-20 text-danger"></i>
                       </button>
                     </td>
